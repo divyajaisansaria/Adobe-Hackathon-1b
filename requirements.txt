@@ -1,0 +1,6 @@
+PyMuPDF
+pdfplumber
+sentence-transformers
+scikit-learn
+tqdm
+llama-cpp-python
