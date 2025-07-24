@@ -1,10 +1,2 @@
-__pycache__/
-*.pyc
-*.gguf
-*.onnx
-*.pt
-*.pdf
-*.log
-models/
 venv/
 .env
