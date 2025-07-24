@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copy requirements file
 COPY requirements.txt .
 
-# Install all dependencies from the internet. This is the most reliable method.
+# Install all dependencies from the internet using the requirements file.
+# The --extra-index-url inside the file will handle the CPU-only torch version.
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application script

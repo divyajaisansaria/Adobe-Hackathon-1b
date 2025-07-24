@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "input_documents": [
+      "Breakfast Ideas.pdf",
+      "Dinner Ideas - Mains_1.pdf",
+      "Dinner Ideas - Mains_2.pdf",
+      "Dinner Ideas - Mains_3.pdf",
+      "Dinner Ideas - Sides_1.pdf",
+      "Dinner Ideas - Sides_2.pdf",
+      "Dinner Ideas - Sides_3.pdf",
+      "Dinner Ideas - Sides_4.pdf",
+      "Lunch Ideas.pdf"
+    ],
+    "persona": "Food Contractor",
+    "job_to_be_done": {
+      "task": "Prepare a vegetarian buffet-style dinner menu for a corporate gathering, including gluten-free items."
+    }
+  },
+  "extracted_sections": [
+    {
+      "document": "Dinner Ideas - Mains_1.pdf",
+      "section_title": "Ratatouille",
+      "importance_rank": 1,
+      "page_number": 14
+    },
+    {
+      "document": "Dinner Ideas - Sides_3.pdf",
+      "section_title": "Kachumbari",
+      "importance_rank": 2,
+      "page_number": 3
+    },
+    {
+      "document": "Breakfast Ideas.pdf",
+      "section_title": "Greek Yogurt with Honey and Nuts",
+      "importance_rank": 3,
+      "page_number": 13
+    },
+    {
+      "document": "Breakfast Ideas.pdf",
+      "section_title": "Veggie Wrap",
+      "importance_rank": 4,
+      "page_number": 12
+    },
+    {
+      "document": "Dinner Ideas - Mains_2.pdf",
+      "section_title": "Tandoori Chicken",
+      "importance_rank": 5,
+      "page_number": 2
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "Dinner Ideas - Mains_1.pdf",
+      "refined_text": "Ingredients:\n1 eggplant, diced •\n1 zucchini, diced •\n1 bell pepper, diced •\n1 small onion, diced •\n2 cloves garlic, minced •\n4 tomatoes, diced •",
+      "page_number": 14
+    },
+    {
+      "document": "Dinner Ideas - Sides_3.pdf",
+      "refined_text": "Ingredients : •\n4 tomatoes o\n1 small onion o\n1 cucumber o\n1/4 cup cilantro o\n1/4 cup lemon juice o\n1 teaspoon salt o\nInstructions : •\nDice tomatoes, onion, and cucumber. o\nMix vegetables with chopped cilantro, lemon juice, and salt. o\nServe chilled. o\nKäsespätzle (Cheese Noodles)\nIngredients : •\n2 cups flour o\n1/2 cup milk o\n3 eggs o\n1 teaspoon salt o\n1/4 teaspoon nutmeg o\n1/4 cup butter o\n1 cup grated cheese o\n1 small onion o\nInstructions : •\nMix flour, milk, beaten eggs, salt, and nutmeg to form a batter. o\nPress batter through a spaetzle maker or colander into boiling water. o\nCook until spaetzle floats to the surface, then drain. o\nSauté sliced onion in butter until golden. o\nLayer spaetzle and grated cheese in a baking dish, top with sautéed onion. o\nBake at 350°F (175°C) for 15 minutes until cheese is melted. o\nServe warm. o\nKartoffelsalat (Potato Salad)\nIngredients : •\n4 potatoes o\n1 small onion o\n1/4 cup bacon o\n1/4 cup vinegar o\n1/4 cup chicken broth o\n1 tablespoon mustard o\n1 teaspoon sugar o\n1 teaspoon salt o\n1/2 teaspoon pepper o\nInstructions : •\nBoil potatoes until tender, then dice. o\nCook diced bacon until crispy, then remove and set aside. o\nSauté diced onion in bacon fat until softened. o\nMix vinegar, chicken broth, mustard, sugar, salt, and pepper in a bowl. o\nCombine potatoes, bacon, and onion with the dressing. o\nServe warm or chilled. o\nKeftedes\nIngredients : •\n1/2 pound ground beef o\n1/2 pound ground pork o\n1 small onion o\n2 cloves garlic o\n1/4 cup bread",
+      "page_number": 3
+    },
+    {
+      "document": "Breakfast Ideas.pdf",
+      "refined_text": "Ingredients:\n1 cup Greek yogurt •\n1 tablespoon honey •\n1/4 cup mixed nuts •\nInstructions:\nIn a bowl, combine Greek yogurt and honey. •\nTop with mixed nuts. •\nServe immediately. •\nAvocado and Egg Toast\nIngredients:\n2 slices whole grain bread, toasted •\n1 ripe avocado •\n1 large egg, poached or fried •\nCrushed red pepper flakes to taste •\nSalt and pepper to taste •\nInstructions:\nMash the avocado and spread it on the toasted bread. •\nTop with the poached or fried egg. •\nSeason with crushed red pepper flakes + salt and pepper. •\nServe immediately. •",
+      "page_number": 13
+    },
+    {
+      "document": "Breakfast Ideas.pdf",
+      "refined_text": "Ingredients:\n1 large whole wheat tortilla •\n1/4 cup hummus •\n1/4 cup shredded carrots •\n1/4 cup sliced cucumber •\n1/4 cup baby spinach •\n1/4 cup sliced bell pepper •\nInstructions:\nSpread hummus on the tortilla. •\nLayer with shredded carrots, cucumber, spinach, and bell pepper. •\nRoll up the tortilla tightly. •\nSlice in half and serve. •\nAlmond Butter Banana Toast\nIngredients:\n2 slices whole grain bread, toasted •\n2 tablespoons almond butter •\n1 banana, sliced •\n1 teaspoon chia seeds •\nInstructions:\nSpread almond butter on the toasted bread. •\nTop with banana slices and sprinkle with chia seeds. •\nServe immediately. •",
+      "page_number": 12
+    },
+    {
+      "document": "Dinner Ideas - Mains_2.pdf",
+      "refined_text": "Ingredients:\n4 boneless, skinless chicken thighs •\n1 cup yogurt •\n2 tablespoons lemon juice •\n2 cloves garlic, minced •\n1 teaspoon grated ginger •\n1 teaspoon cumin •\n1 teaspoon coriander •\n1 teaspoon turmeric •\n1 teaspoon paprika •\n1 teaspoon garam masala •\n1/4 teaspoon cayenne pepper •\nSalt and pepper to taste •\nInstructions:\nIn a bowl, mix yogurt, lemon juice, minced garlic, grated ginger, cumin, coriander, •\nturmeric, paprika, garam masala, cayenne pepper, salt, and pepper.\nMarinate chicken thighs in the mixture for at least 1 hour. •\nPreheat oven to 400°F (200°C). •\nPlace chicken on a baking sheet and bake for 25-30 minutes until cooked through. •\nServe warm. •",
+      "page_number": 2
+    }
+  ]
+}

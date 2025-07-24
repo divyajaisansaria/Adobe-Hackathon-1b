@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "input_documents": [
+      "South of France - Cities.pdf",
+      "South of France - Cuisine.pdf",
+      "South of France - History.pdf",
+      "South of France - Restaurants and Hotels.pdf",
+      "South of France - Things to Do.pdf",
+      "South of France - Tips and Tricks.pdf",
+      "South of France - Traditions and Culture.pdf"
+    ],
+    "persona": "Travel Planner",
+    "job_to_be_done": {
+      "task": "Plan a trip of 4 days for a group of 10 college friends."
+    }
+  },
+  "extracted_sections": [
+    {
+      "document": "South of France - Tips and Tricks.pdf",
+      "section_title": "Special Considerations",
+      "importance_rank": 1,
+      "page_number": 6
+    },
+    {
+      "document": "South of France - Cuisine.pdf",
+      "section_title": "Conclusion",
+      "importance_rank": 2,
+      "page_number": 7
+    },
+    {
+      "document": "South of France - Cuisine.pdf",
+      "section_title": "Culinary Experiences",
+      "importance_rank": 3,
+      "page_number": 5
+    },
+    {
+      "document": "South of France - Cities.pdf",
+      "section_title": "Conclusion",
+      "importance_rank": 4,
+      "page_number": 13
+    },
+    {
+      "document": "South of France - History.pdf",
+      "section_title": "Conclusion",
+      "importance_rank": 5,
+      "page_number": 11
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "South of France - Tips and Tricks.pdf",
+      "refined_text": "Beach Trips\nBeach Bag: A large, waterproof bag for essentials. •\nTowels: Lightweight, quick-drying beach towels. •\nBeach Toys: Buckets, shovels, and toys for kids. •\nSnorkeling Gear: Bring your own gear for a better fit and comfort. •\nAdditional Tips: Pack a beach umbrella or tent for shade and a cooler for drinks and •\nsnacks. Consider bringing a waterproof phone case to protect your device.\nHiking and Outdoor Activities\nBackpack: A sturdy, comfortable backpack for essentials. •\nWater Bottle: A reusable water bottle. •\nFirst Aid Kit: A small kit with band-aids, antiseptic wipes, and medications. •\nInsect Repellent: Protect against bugs and mosquitoes. •\nAdditional Tips: Wear moisture-wicking clothing and sturdy hiking boots. Bring a map •\nand compass or GPS device. Pack energy bars or snacks for long hikes.\nCity Exploration\nDay Bag: A small, secure day bag for carrying essentials like water, snacks, and a •\ncamera.\nComfortable Shoes: Wear comfortable walking shoes for exploring cities. •\nGuidebook: A guidebook or map to help navigate and find points of interest. •\nAdditional Tips: Use a money belt or hidden pouch to keep valuables safe. Consider •\nusing public transportation to explore cities efficiently.\nWine Tours\nComfortable Clothing: Wear comfortable, casual clothing suitable for walking and •\nwine tasting.",
+      "page_number": 6
+    },
+    {
+      "document": "South of France - Cuisine.pdf",
+      "refined_text": "The South of France offers a rich and diverse culinary landscape that is sure to delight any\nfood lover. From fresh seafood and Provençal dishes to iconic restaurants and unique culinary\nexperiences, there is something for everyone to enjoy. Whether you're savoring a bowl of\nbouillabaisse by the sea, exploring vibrant food markets, or indulging in a Michelin-starred\nmeal, the flavors of this beautiful region will leave a lasting impression. Use this guide to plan\nyour culinary journey and savor the tastes of the South of France, creating memories that will\nlinger long after your trip has ended. Bon appétit!",
+      "page_number": 7
+    },
+    {
+      "document": "South of France - Cuisine.pdf",
+      "refined_text": "In addition to dining at top restaurants, there are several culinary experiences you should\nconsider:\nCooking Classes: Many towns and cities in the South of France offer cooking classes •\nwhere you can learn to prepare traditional dishes like bouillabaisse, ratatouille, and\ntarte tropézienne. These classes are a great way to immerse yourself in the local\nculture and gain hands-on experience with regional recipes. Some classes even\ninclude a visit to a local market to shop for fresh ingredients.\nFood Markets: Visit local markets such as the Cours Saleya Market in Nice or the •\nMarché Forville in Cannes to sample fresh produce, cheeses, and charcuterie. These\nmarkets are a feast for the senses, with stalls overflowing with colorful fruits and\nvegetables, fragrant herbs, and artisanal products. Take the time to chat with the\nvendors and learn about the local specialties.\nWine Tours: The South of France is renowned for its wine regions, including Provence •\nand Languedoc. Take a wine tour to visit vineyards, taste local wines, and learn about\nthe winemaking process. Many wineries offer guided tours and tastings, giving you the\nopportunity to sample a variety of wines and discover new favorites. Don't miss the\nchance to try rosé from Provence, which is famous for its light, refreshing flavor.\nOlive Oil Tasting: The region is famous for its olive oil. Visit an olive grove to learn •\nabout olive oil production and enjoy a tasting session. You'll have the chance to\nsample different v",
+      "page_number": 5
+    },
+    {
+      "document": "South of France - Cities.pdf",
+      "refined_text": "The South of France is home to a diverse array of cities, each with its own unique history,\nculture, and attractions. From the ancient Roman ruins of Arles and Nîmes to the medieval\nfortresses of Carcassonne and Avignon, each city offers a glimpse into the rich heritage of the\nregion. Whether you're exploring the vibrant streets of Marseille, the elegant boulevards of\nAix-en-Provence, or the charming squares of Montpellier, you'll find a wealth of historical\ntreasures and cultural experiences waiting to be discovered. Use this guide to plan your\njourney through the South of France and immerse yourself in the fascinating history and\nculture of this beautiful region.",
+      "page_number": 13
+    },
+    {
+      "document": "South of France - History.pdf",
+      "refined_text": "The South of France offers a rich tapestry of history, culture, and architecture that is sure to\ncaptivate any traveler. From the ancient Roman ruins of Nîmes and Arles to the medieval\nfortresses of Carcassonne and Avignon, each city and town has its own unique story to tell.\nWhether you're exploring the vibrant streets of Marseille, the elegant boulevards of Aix-en-\nProvence, or the charming squares of Montpellier, you'll find a wealth of historical treasures\nwaiting to be discovered. Use this guide to plan your journey through the South of France and\nimmerse yourself in the fascinating history of this beautiful region.",
+      "page_number": 11
+    }
+  ]
+}

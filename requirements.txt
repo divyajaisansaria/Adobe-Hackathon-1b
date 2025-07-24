@@ -1,11 +1,9 @@
-scikit-build-core>=0.9.2
-cmake
-wheel
-ninja
+--extra-index-url https://download.pytorch.org/whl/cpu
 numpy<2.0
-torch
-torchvision
-torchaudio
+urllib3<2.0
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
 sentence-transformers
 llama-cpp-python
 pdfplumber
