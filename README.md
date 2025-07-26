@@ -51,8 +51,8 @@ input/
 
 ### Step 4: Build and Run the Docker Container
 
-**Build the Docker Image:**
-This command builds the image, copying the code and model files into it.
+**Build and Run the Docker Image:**
+These commands builds the image, copying the code and model files into it, and runs the image.
 - **On Windows**
 ```bash
 docker build -t adobe-round-1b .
