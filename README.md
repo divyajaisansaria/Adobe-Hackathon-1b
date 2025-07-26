@@ -1,6 +1,8 @@
-# 📄 Adobe PDF Content Extractor (Hackathon-1B)
+# 📄 Adobe Hackathon 1B – Persona-Driven PDF Content Extractor
 
-This project uses a containerized **Docker** environment to run an advanced model for extracting structured data from PDF documents. This version requires **Git LFS** (Large File Storage) to handle the large model files.
+This project uses a containerized **Docker** environment to run an advanced AI-powered pipeline that extracts and ranks **relevant sections and sub-sections** from multiple PDF documents based on a given **persona** and their **task (job-to-be-done)**.
+
+It leverages **Git LFS** (Large File Storage) to manage lightweight language models and embedding tools required for offline semantic analysis.
 
 ## 🚀 How to Run
 
@@ -38,19 +40,13 @@ cd Adobe-Hackathon-1b
 
 ### Step 3: Prepare Input Data
 
-The script expects a specific folder structure inside the `input` directory. Place your collection folders inside it like this:
+The script expects a specific folder structure inside the `input` directory. Place your input files inside it like this:
 
 ```bash
 input/
-├── Collection 1/
-│   ├── PDFs/
-│   │   └── (Your PDF files for collection 1)
-│   └── challenge1b_input.json
-│
-└── Collection 2/
 ├── PDFs/
-│   └── (Your PDF files for collection 2)
-└── challenge1b_input.json
+│   │   └── (Your PDF files)
+│   └──input.json
 ```
 
 ### Step 4: Build and Run the Docker Container
@@ -76,13 +72,53 @@ docker run --rm -v $(pwd)/input:/app/input:ro -v $(pwd)/output/adobe-round-1b/:/
 The resulting `.json` files will be saved in the `output/adobe-round-1b/` directory on your computer.
 
 ## 🧠 Project Explanation
+This project solves the Adobe Hackathon Round 1B challenge by building a modular, offline, CPU-only pipeline that intelligently extracts **persona-relevant content** from diverse PDF documents. The pipeline combines layout-based PDF parsing, language model-driven query generation, multi-query semantic search, and cross-encoder reranking for high-precision content selection.
+
+### 🧩 Step-by-Step Breakdown
+
+1. **PDF Structure Parsing**
+   - Uses `pdfplumber` to extract all lines from each PDF, along with visual features like:
+     - Font size
+     - Boldness
+     - Word count
+     - Vertical spacing
+   - Headings are identified using a scoring function, and documents are chunked into sections based on heading boundaries.
+
+2. **Heading Classification & Chunking**
+   - Headings are classified into H1, H2, or H3 levels using regex patterns and visual cues.
+   - Each heading and its following body content is grouped as a **chunk**, tagged with page number and document ID.
+
+3. **Persona Understanding**
+   - The given persona and job-to-be-done are processed by a lightweight **TinyLLaMA model** (running locally via `llama-cpp`) to generate **5 diverse semantic queries**.
+   - These queries simulate how the persona would search the documents to complete their task.
+
+4. **Multi-Query Embedding & Ranking**
+   - Queries and all section chunks are embedded using the **`bge-small-en-v1.5`** model (via `sentence-transformers`).
+   - Cosine similarity is calculated between queries and chunks.
+   - Scores are **weighted across queries**, and the most relevant chunks are shortlisted.
+   - A **document diversity cap** (max 2 chunks per PDF) ensures variety.
+
+5. **Sub-Section Refinement**
+   - From the top-ranked chunks, a cross-encoder (`cross-encoder/ms-marco`) is used to **rerank** based on deeper semantic alignment.
+   - The top 5 final selections are returned with their document name, page number, section title, and a short text extract.
+
+---
+
 
 ### File Structure
 * **`Dockerfile`**: Builds the container, installing all dependencies and "baking in" the model.
 * **`process_pdf.py`**: The main Python script that orchestrates the PDF processing.
 * **`model/`**: Contains the large ML model files, managed by Git LFS.
-* **`input/`**: Directory where you place your source `Collection` folders.
+* **`input/`**: Directory where you place your input pdf files and input.json.
 * **`output/`**: Directory where the final JSON results are written.
+  
+### ✅ Key Highlights
+- 🔒 **Fully Offline**: No internet access required at any stage.
+- ⚡ **Fast Execution**: ≤ 60 seconds for 7-10 PDFs on CPU.
+- 🧠 **Multi-angle Relevance**: Multiple persona queries + diversity-aware ranking.
+- 🔍 **Granular Extraction**: Extracts section-level and sub-paragraph insights.
+- 📚 **Reusable Modular Code**: Clean functions for chunking, embedding, and reranking.
+
 
 ### How It Works
 The `docker build` command creates a self-contained image with the Python environment, all dependencies, and the large model files. When you execute `docker run`, the container starts and runs the `process_pdf.py` script. The script reads the PDF collections from the mounted `/app/input` folder, uses the internal model to perform data extraction, and writes the structured JSON output to the `/app/output` folder, which appears on your local machine.
