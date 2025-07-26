@@ -102,6 +102,23 @@ This project solves the Adobe Hackathon Round 1B challenge by building a modular
    - From the top-ranked chunks, a cross-encoder (`cross-encoder/ms-marco`) is used to **rerank** based on deeper semantic alignment.
    - The top 5 final selections are returned with their document name, page number, section title, and a short text extract.
 
+### 🧭 Pipeline Flow Diagram
+
+```mermaid
+graph TD
+  A[Start: Collection Input] --> B[PDF Parsing via pdfplumber]
+  B --> C[Heading Detection & Chunking]
+  C --> D[Persona & Task from challenge1b_input.json]
+  D --> E[TinyLLaMA generates 5 semantic queries]
+  C --> F[Embed chunks using BGE model]
+  E --> G[Embed queries using BGE model]
+  F --> H[Cosine similarity scoring (multi-query)]
+  G --> H
+  H --> I[Top chunks (max 2 per document)]
+  I --> J[Cross-Encoder Re-ranking]
+  J --> K[Top 5 Results: section title + page + document + refined text]
+  K --> L[Write JSON to /app/output/]
+
 ---
 
 
