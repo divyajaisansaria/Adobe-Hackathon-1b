@@ -26,7 +26,7 @@ cd Adobe-Hackathon-1b
     
 ```
 
-- **On Mac**
+- **On macOS / Linux:**
 ```bash
 brew install git-lfs
 git lfs install
