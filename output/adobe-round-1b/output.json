@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "input_documents": [
+      "Learn Acrobat - Create and Convert_1.pdf",
+      "Learn Acrobat - Create and Convert_2.pdf",
+      "Learn Acrobat - Edit_1.pdf",
+      "Learn Acrobat - Edit_2.pdf",
+      "Learn Acrobat - Export_1.pdf",
+      "Learn Acrobat - Export_2.pdf",
+      "Learn Acrobat - Fill and Sign.pdf",
+      "Learn Acrobat - Generative AI_1.pdf",
+      "Learn Acrobat - Generative AI_2.pdf",
+      "Learn Acrobat - Request e-signatures_1.pdf",
+      "Learn Acrobat - Request e-signatures_2.pdf",
+      "Learn Acrobat - Share_1.pdf",
+      "Learn Acrobat - Share_2.pdf",
+      "Test Your Acrobat Exporting Skills.pdf",
+      "The Ultimate PDF Sharing Checklist.pdf"
+    ],
+    "persona": "HR professional",
+    "job_to_be_done": {
+      "task": "Create and manage fillable forms for onboarding and compliance."
+    }
+  },
+  "extracted_sections": [
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "section_title": "Types of PDF forms",
+      "importance_rank": 1,
+      "page_number": 1
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "section_title": "Fill in interactive forms",
+      "importance_rank": 2,
+      "page_number": 7
+    },
+    {
+      "document": "Learn Acrobat - Request e-signatures_1.pdf",
+      "section_title": "Steps to send in bulk",
+      "importance_rank": 3,
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Generative AI_1.pdf",
+      "section_title": "Submit 2. Choose from the options, or provide details in the text box. Then select",
+      "importance_rank": 4,
+      "page_number": 21
+    },
+    {
+      "document": "The Ultimate PDF Sharing Checklist.pdf",
+      "section_title": "Did you enter the email addresses of clients, agents, and other",
+      "importance_rank": 5,
+      "page_number": 2
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Interactive forms : These contain fields that you can select and fill in. •\nFlat forms : These do not have interactive fields. It could be a paper form or PDF that •\nhasn’t been optimized for form filling. The Fill & Sign tool automatically detects the\nform fields like text fields, comb fields, checkboxes, and radio buttons. You can\nmanually add text and other symbols anywhere on the form using the Fill & Sign tool if\nrequired.\nYou can complete the forms by entering information and adding your signatures. Acrobat\nalso allows you to send your completed forms to others and securely save them in Adobe\ncloud storage.",
+      "page_number": 1
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "interactive An form contains fields that you can select or fill in.",
+      "page_number": 7
+    },
+    {
+      "document": "Learn Acrobat - Request e-signatures_1.pdf",
+      "refined_text": "Send in Bulk 1. Select the tool as explained earlier. The Send in bulk file upload page\nis displayed.\nAdd a file 2. :\nUpload (by search or drag-and-drop) the primary file that you are using to build\nyour agreement template.\nSelect a file The selector on the right of the button allows you to choose from the\nsource where the file resides. The default is your local system.\nOnce a file is selected, the configuration page loads.\nAdd participants 3. :\n1. List the participants required.\nSign The action is assigned by default. •\nSign The action allows the participant to enter field data and sign the •\nagreement.\nUp to 50 participants are supported. •\nEach participant listed receives their own agreement. •\n2. Enter recipient email addresses followed by commas, or copy and paste a list of\nemail addresses into the Email field.\n3. Configure participant authentication by clicking the key icon to the right of the\nparticipant.\nEmail is the default authentication method for confirming the identity of each •\nparticipant and is sufficient to obtain a legal signature in most cases.\nPassword authentication can be added to increase security. When configured, the participant\nmust enter the password before they can interact with the agreement.\n4. . (Optional) Add yourself and/or CC'd parties\nAdd me Click to add yourself as a counter signer. •",
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Generative AI_1.pdf",
+      "refined_text": "Select the applicable options to report content",
+      "page_number": 21
+    },
+    {
+      "document": "The Ultimate PDF Sharing Checklist.pdf",
+      "refined_text": "•\nstakeholders?\nCustomize Your Message\n•\nHave you added a personal touch to the subject and message\n•\nfields, highlighting key property details?\nCreate and Share the Link\n•\nDid you generate a shareable link and copy it for distribution?\n•\nSend the Invitation\n•\nHave you sent the email or shared the link through your\n•\nchosen platform?\nFollow Up\n•\nAre you tracking who has accessed the document and\n•\nfollowing up with clients for feedback or next steps?\nProfessional Tip: Highlight Key Details\nMake sure to emphasize important property details in your message to\ncapture your clients' attention.",
+      "page_number": 2
+    }
+  ]
+}
