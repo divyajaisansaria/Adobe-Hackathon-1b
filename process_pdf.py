@@ -1,30 +1,16 @@
-# process_pdf.py
-# Final version using local paths for all models.
-
 import os
 import json
 import re
 import argparse
 from datetime import datetime
 from collections import Counter
-
-# Third-party library imports
 import numpy as np
 import pdfplumber
 from sentence_transformers import SentenceTransformer, CrossEncoder, models
 from sklearn.metrics.pairwise import cosine_similarity
 from llama_cpp import Llama
 
-# --- Configuration ---
-MODELS_DIR = "models"
-DEFAULT_LLAMA_MODEL_PATH = os.path.join(MODELS_DIR, "tinyllama-1.1b-chat-v1.0-gguf", "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf")
-DEFAULT_BGE_MODEL_PATH = os.path.join(MODELS_DIR, "bge-small-en-v1.5")
-DEFAULT_CROSS_ENCODER_PATH = os.path.join(MODELS_DIR, "cross-encoder-ms-marco")
 
-
-# ==============================================================================
-# 1. UTILITY FUNCTIONS (Unchanged)
-# ==============================================================================
 def read_json(path):
     with open(path, 'r', encoding='utf-8') as f: return json.load(f)
 def write_json(data, path):
@@ -37,9 +23,7 @@ def format_extracted_sections(ranked_chunks):
 def format_subsection_analysis(ranked_chunks):
     return [{"document": c["document"], "refined_text": c["text"][:1500], "page_number": c["page"]} for c in ranked_chunks]
 
-# ==============================================================================
-# 2. PDF PARSING AND HEADING EXTRACTION (Unchanged)
-# ==============================================================================
+
 def is_junk_line(line_text):
     text = line_text.strip().lower()
     if re.search(r"^(page\s*\d+|version\s*[\d\.]+|\d+\s*of\s*\d+)", text) or \
@@ -154,11 +138,11 @@ def extract_pdf_text_chunks(pdf_path):
         chunks.append({"title": heading["text"], "text": content_text.strip(), "page": heading["page"]})
     return chunks
 
-# ==============================================================================
-# 3. MULTI-QUERY RANKER (Unchanged)
-# ==============================================================================
+
 class TinyLlamaQueryGenerator:
-    def __init__(self, model_path=DEFAULT_LLAMA_MODEL_PATH):
+
+    def __init__(self, model_dir):
+        model_path = os.path.join(model_dir, "tinyllama-1.1b-chat-v1.0-gguf", "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf")
         if not os.path.exists(model_path): raise FileNotFoundError(f"Llama model not found at {model_path}.")
         self.llm = Llama(model_path=model_path, n_ctx=2048, verbose=False)
     def generate_queries(self, persona, task, num_queries=5):
@@ -170,14 +154,19 @@ class TinyLlamaQueryGenerator:
         return [f"Query: {q}" for q in queries[:num_queries]]
 
 class MultiQueryRanker:
-    def __init__(self, use_tiny_llama=True):
+
+    def __init__(self, model_dir, use_tiny_llama=True):
         print("Initializing MultiQueryRanker...")
-        word_embedding_model = models.Transformer(DEFAULT_BGE_MODEL_PATH)
+        bge_model_path = os.path.join(model_dir, "bge-small-en-v1.5")
+        cross_encoder_path = os.path.join(model_dir, "cross-encoder-ms-marco")
+
+        word_embedding_model = models.Transformer(bge_model_path)
         pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension())
         self.model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
-        self.cross_encoder = CrossEncoder(DEFAULT_CROSS_ENCODER_PATH)
-        self.query_generator = TinyLlamaQueryGenerator() if use_tiny_llama else None
+        self.cross_encoder = CrossEncoder(cross_encoder_path)
+        self.query_generator = TinyLlamaQueryGenerator(model_dir=model_dir) if use_tiny_llama else None
         print("Initialization complete.")
+        
     def rank(self, persona, task, chunks, top_k=5, max_chunks_per_doc=2):
         queries = self.query_generator.generate_queries(persona, task) if self.query_generator else [f"Query: overview of {task}"]
         print(f"Generated {len(queries)} queries.")
@@ -199,9 +188,6 @@ class MultiQueryRanker:
         for i, chunk in enumerate(filtered): chunk["cross_score"] = float(cross_scores[i])
         return sorted(filtered, key=lambda x: x["cross_score"], reverse=True)[:top_k]
 
-# ==============================================================================
-# 4. MAIN PIPELINE LOGIC (UPDATED)
-# ==============================================================================
 def process_single_collection(collection_path, output_dir, ranker):
     """Processes a single collection and writes its output to the specified output directory."""
     collection_name = os.path.basename(collection_path)
@@ -211,7 +197,6 @@ def process_single_collection(collection_path, output_dir, ranker):
     input_json_path = os.path.join(collection_path, "challenge1b_input.json")
     pdfs_dir = os.path.join(collection_path, "PDFs")
     
-    # FIX: The output path is now constructed based on the separate output_dir argument.
     output_json_path = os.path.join(output_dir, f"{collection_name}_challenge_output.json")
 
     if not os.path.exists(input_json_path):
@@ -249,15 +234,14 @@ def process_single_collection(collection_path, output_dir, ranker):
     write_json(result, output_json_path)
     print(f"✅ Success! Result written to: {output_json_path}")
 
-
-def main(base_input_dir, base_output_dir):
+def main(base_input_dir, base_output_dir, model_dir):
     """Main function to find and process all collection folders."""
     if not os.path.isdir(base_input_dir):
         print(f"Error: Input directory not found at '{base_input_dir}'")
         return
     
     os.makedirs(base_output_dir, exist_ok=True)
-    ranker = MultiQueryRanker()
+    ranker = MultiQueryRanker(model_dir=model_dir)
     
     collection_dirs = [
         d for d in os.listdir(base_input_dir)
@@ -270,7 +254,6 @@ def main(base_input_dir, base_output_dir):
 
     for collection_name in collection_dirs:
         collection_path = os.path.join(base_input_dir, collection_name)
-        # FIX: Pass the base_output_dir to the processing function.
         process_single_collection(collection_path, base_output_dir, ranker)
     
     print("-" * 80)
@@ -279,8 +262,8 @@ def main(base_input_dir, base_output_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process document collections.")
-    # FIX: The script now accepts two arguments again.
     parser.add_argument("input_dir", help="The base directory containing collection folders.")
     parser.add_argument("output_dir", help="The directory where output files will be saved.")
+    parser.add_argument("model_dir", help="The directory containing the model files.")    
     args = parser.parse_args()
-    main(args.input_dir, args.output_dir)
+    main(args.input_dir, args.output_dir, args.model_dir)

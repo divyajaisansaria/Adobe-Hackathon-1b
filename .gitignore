@@ -1,5 +1,5 @@
 venv/
 .env
-.gitignore
 .gitattributes
+.DS_Store
 
