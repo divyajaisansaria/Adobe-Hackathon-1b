@@ -56,6 +56,9 @@ This command builds the image, copying the code and model files into it.
 - **On Windows**
 ```bash
 docker build -t adobe-round-1b .
+
+```
+```bash
 docker run --rm -v ${PWD}/input:/app/input:ro -v ${PWD}/output/adobe-round-1b/:/app/output --network none adobe-round-1b
 
 ```
@@ -63,6 +66,9 @@ docker run --rm -v ${PWD}/input:/app/input:ro -v ${PWD}/output/adobe-round-1b/:/
 - **On macOS / Linux:**
 ```bash
 docker build -t adobe-round-1b .
+
+```
+```bash
 docker run --rm -v $(pwd)/input:/app/input:ro -v $(pwd)/output/adobe-round-1b/:/app/output --network none adobe-round-1b
 
 ```
