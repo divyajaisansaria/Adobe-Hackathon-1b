@@ -1,5 +1,4 @@
 venv/
 .env
-.gitattributes
 .DS_Store
 
