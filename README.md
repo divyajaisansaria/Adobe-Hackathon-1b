@@ -22,7 +22,6 @@ Open your terminal (PowerShell or Git Bash on Windows) and run the following com
 
 - **On Windows**
 ```bash
-git lfs install
 git clone https://github.com/divyajaisansaria/Adobe-Hackathon-1b
 cd Adobe-Hackathon-1b
     
@@ -30,9 +29,6 @@ cd Adobe-Hackathon-1b
 
 - **On macOS / Linux:**
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install git-lfs
-git lfs install
 git clone https://github.com/divyajaisansaria/Adobe-Hackathon-1b
 cd Adobe-Hackathon-1b
     
